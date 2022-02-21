@@ -1,4 +1,4 @@
-package com.example.BlogHub.model;
+package com.example.BlogHub.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,15 +14,18 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name="global_settings")
 public class GlobalSettings {
+
     @Id
-    @SequenceGenerator(name = "settingsIdSeq", sequenceName = "settings_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "settingsIdSeq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int id;
+    private long id;
+
     @Column(nullable = false)
     private String code;
+
     @Column(nullable = false)
     private String name;
+
     @Column(nullable = false)
     private String value;
 

@@ -1,0 +1,15 @@
+server:
+  port: 8086
+spring:
+  liquibase:
+    enabled: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/bloghub?user=johnskyi&password=test
+    platform: postgres
+    initialization-mode: always
+    continue-on-error: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+    hibernate:
+      ddl-auto: none

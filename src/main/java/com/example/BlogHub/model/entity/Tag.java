@@ -1,4 +1,4 @@
-package com.example.BlogHub.model;
+package com.example.BlogHub.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,13 +14,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Table(name="tags")
 public class Tag {
+
     @Id
-    @SequenceGenerator(name = "tagsIdSeq", sequenceName = "tags_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tagsIdSeq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int id;
+    private long id;
+
     @Column(nullable = false)
-    private int postId;
-    @Column(nullable = false)
-    private int tagId;
+    private String name;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "post_id", referencedColumnName = "id", nullable = false)
+    private Post postId;
 }

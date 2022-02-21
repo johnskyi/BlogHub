@@ -1,5 +1,6 @@
-package com.example.BlogHub.model;
+package com.example.BlogHub.model.entity;
 
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,15 +16,18 @@ import java.util.Date;
 @AllArgsConstructor
 @Table(name="captcha_codes")
 public class CaptchaCode {
+
     @Id
-    @SequenceGenerator(name = "captchaIdSeq", sequenceName = "captcha_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "captchaIdSeq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
-    private int id;
+    private long id;
+
     @Column(nullable = false)
-    private Date time;
+    private LocalDate time;
+
     @Column(nullable = false)
     private String code;
+
     @Column(nullable = false)
     private String secretCode;
 
